@@ -2,7 +2,7 @@
     <div class="spacer"></div>
     <div class="template">
         <div class="go-back">
-            <a href="" (click)="logOut();">🡠 logout</a>
+            <a [routerLink]="" (click)="logOut();">🡠 logout</a>
         </div>
         <div class="gallery-header">
             <h1 class="gallery-title">Foto albumi {{currentUsername | titlecase}}</h1>

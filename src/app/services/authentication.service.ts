@@ -11,7 +11,6 @@ export class AuthenticationService {
 
   constructor() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log("AuthenticationService.constructor: ", this.currentUser);
     this.loginFlag = this.currentUser !== null;
   }
 

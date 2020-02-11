@@ -11,12 +11,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./gallery/gallery.module').then(mod => mod.GalleryModule),
   },
-  { path: '', redirectTo: '/gallery', pathMatch: 'full' },
-  { path: "**", component: PageNotFoundComponent},
+  { path: '', redirectTo: 'gallery', pathMatch: 'full' },
+  { path: "**", component: PageNotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "enabled", enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Album, dbAlbum } from 'src/app/model/Album';
+import { Album } from 'src/app/model/Album';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AlbumService } from '../services/album.service';
-import { dbUser } from 'src/app/model/User';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
@@ -36,7 +33,7 @@ export class AlbumsComponent implements OnInit {
 
   logOut() {
     this.authenticationService.logout();
-    this.router.navigate(["../login"]);
+    this.router.navigate(['../login']);
   }
 
 }

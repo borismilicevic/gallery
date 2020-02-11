@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, share, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { dbUser } from 'src/app/model/User';
-import { Observable, concat, merge, forkJoin, throwError } from 'rxjs';
+import { Observable, forkJoin, throwError } from 'rxjs';
 import { dbAlbum, Album } from 'src/app/model/Album';
 import { Photo } from 'src/app/model/Photo';
 
@@ -27,11 +27,12 @@ export class AlbumService {
             albumData.id,
             result[1].find((user) => user.id === albumData.userId).name,
             albumData.title,
-            this.http.get<Photo[]>("https://jsonplaceholder.typicode.com/photos?_limit=1&albumId=" + albumData.id).pipe(map(
-              (photo) => {
-                return photo[0].thumbnailUrl;
-              }
-            ))));
+            this.http.get<Photo[]>("https://jsonplaceholder.typicode.com/photos?_limit=1&albumId=" + albumData.id)
+              .pipe(map(
+                (photo) => {
+                  return photo[0].thumbnailUrl;
+                }
+              ))));
         });
         return albums;
       }
