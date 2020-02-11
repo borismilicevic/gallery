@@ -1,0 +1,38 @@
+<div class="page">
+    <div class="spacer"></div>
+    <div class="template">
+        <div class="go-back">
+            <a [routerLink]="" (click)="logOut();">🡠 logout</a>
+        </div>
+        <div class="gallery-header">
+            <h1 class="gallery-title">Foto albumi {{currentUsername | titlecase}}</h1>
+            <div class="display-switch">
+                <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="horizontalDisplay">
+                    <mat-button-toggle [value]="true" aria-label="Horizontal view">
+                        <mat-icon>apps</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle [value]="false" aria-label="Vertical view">
+                        <mat-icon>dehaze</mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+        <div class="album-container" *ngIf="albums">
+            <div [ngClass]="{'card-horizontal': horizontalDisplay, 'card-vertical': !horizontalDisplay}" *ngFor="let album of albums">
+
+                <div class="thumbnail" *ngIf="album.thumbnail$ | async as thumbnail" [ngClass]="{'thumbnail-horizontal': horizontalDisplay, 'thumbnail-vertical': !horizontalDisplay}">
+                    <img [src]="thumbnail" [alt]="album.title">
+                </div>
+                <div [ngClass]="{'album-description-horizontal': horizontalDisplay, 'album-description-vertical': !horizontalDisplay}">
+                    <h2 class="album-title" [ngClass]="{'album-title-horizontal': horizontalDisplay}">
+                        <a [routerLink]="['../album', album.id]">
+                            {{album.title | titlecase}}
+                        </a>
+                    </h2>
+                    <p class="album-creator">kreirao: {{album.creator}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+</div>

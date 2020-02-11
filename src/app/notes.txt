@@ -1,0 +1,4 @@
+- pipe operator can accept multiple operators. We do not need separate pipe for each operator. - done
+- font family and size of input waterprints  - done
+- unsubscribe the observables - https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
+ HTTP responses and ActivatedRoutes do not require unsubscribing - https://stackoverflow.com/questions/35042929/is-it-necessary-to-unsubscribe-from-observables-created-by-http-methods
