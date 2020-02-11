@@ -74,6 +74,12 @@
     vertical-align: middle;
 }
 
+mat-label {
+    color: rgb(200, 200, 200);
+    font-size: 1.4rem;
+    font-weight: 60;
+}
+
 .album-container {
     display: block;
     max-width: 100%;

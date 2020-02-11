@@ -20,8 +20,8 @@
         <div class="album-container" *ngIf="albums">
             <div [ngClass]="{'card-horizontal': horizontalDisplay, 'card-vertical': !horizontalDisplay}" *ngFor="let album of albums">
 
-                <div class="thumbnail" [ngClass]="{'thumbnail-horizontal': horizontalDisplay, 'thumbnail-vertical': !horizontalDisplay}">
-                    <img [src]="album.thumbnail$ | async" [alt]="album.title">
+                <div class="thumbnail" *ngIf="album.thumbnail$ | async as thumbnail" [ngClass]="{'thumbnail-horizontal': horizontalDisplay, 'thumbnail-vertical': !horizontalDisplay}">
+                    <img [src]="thumbnail" [alt]="album.title">
                 </div>
                 <div [ngClass]="{'album-description-horizontal': horizontalDisplay, 'album-description-vertical': !horizontalDisplay}">
                     <h2 class="album-title" [ngClass]="{'album-title-horizontal': horizontalDisplay}">

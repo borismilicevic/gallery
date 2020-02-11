@@ -41,6 +41,7 @@ export class PhotosComponent implements OnInit {
         this.photoService.fetchPhotos(this.albumId, 20).subscribe(
           (photos) => {
             this.photos = photos;
+            this.filteredPhotos = this.photos;
             localStorage.setItem("photos?albumId=" + this.albumId.toString(), JSON.stringify(this.photos));
           },
           (error) => { console.log(error); this.router.navigate(["../page-not-found"]); }
@@ -54,8 +55,8 @@ export class PhotosComponent implements OnInit {
           (error) => { console.log(error); this.router.navigate(["../page-not-found"]); }
         );
       }
-
-      this.filteredPhotos = this.photos;
+      else
+        this.filteredPhotos = this.photos;
     });
 
   }

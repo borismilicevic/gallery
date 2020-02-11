@@ -23,7 +23,6 @@ export class AlbumService {
       (result) => {
         let albums: Album[] = [];
         result[0].forEach((albumData) => {
-          console.log("https://jsonplaceholder.typicode.com/photos?_limit=1&albumId=" + albumData.id);
           albums.push(new Album(
             albumData.id,
             result[1].find((user) => user.id === albumData.userId).name,
@@ -36,7 +35,7 @@ export class AlbumService {
         });
         return albums;
       }
-    )).pipe(catchError(this.handleError));
+    ), catchError(this.handleError));
   }
 
   public getUsers(): Observable<dbUser[]> {

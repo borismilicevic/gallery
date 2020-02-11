@@ -29,7 +29,7 @@ export class AlbumsComponent implements OnInit {
     this.currentUsername = this.authenticationService.currentUser.email.split('@')[0];
     this.albumService.albums$
       .subscribe(
-        (data: Album[]) => { console.log(data); this.albums = data; },
+        (data: Album[]) => { this.albums = data; },
         (error) => { console.log(error); }
       );
   }

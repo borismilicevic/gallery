@@ -20,10 +20,11 @@
         <form>
             <mat-form-field>
                 <mat-icon matPrefix class="search-icon">search</mat-icon>
-                <input type="tel" matInput placeholder="Search" name="search" [(ngModel)]="filter" (blur)="filterPhotos();" (keydown.enter)="filterPhotos();">
+                <mat-label>Pretraži</mat-label>
+                <input type="tel" matInput name="search" [(ngModel)]="filter" (blur)="filterPhotos();" (keydown.enter)="filterPhotos();">
             </mat-form-field>
         </form>
-        <div class="album-container" *ngIf="photos">
+        <div class="album-container">
             <div [ngClass]="{'card-horizontal': horizontalDisplay, 'card-vertical': !horizontalDisplay}" *ngFor="let photo of filteredPhotos">
 
                 <div class="thumbnail" [ngClass]="{'thumbnail-horizontal': horizontalDisplay, 'thumbnail-vertical': !horizontalDisplay}">

@@ -9,6 +9,10 @@
      justify-content: center;
  }
  
+ mat-label {
+     color: rgb(160, 160, 160);
+ }
+ 
  .submit-button {
      border-radius: 0;
      display: block;
