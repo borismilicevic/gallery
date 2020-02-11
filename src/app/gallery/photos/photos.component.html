@@ -1,0 +1,45 @@
+<div class="page">
+    <div class="spacer"></div>
+    <div class="template">
+        <div class="go-back">
+            <a routerLink="/gallery/albums">🡠 povratak</a>
+        </div>
+        <div class="gallery-header">
+            <h1 class="gallery-title" *ngIf="albumTitle">{{albumTitle | titlecase}}</h1>
+            <div class="display-switch">
+                <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="horizontalDisplay">
+                    <mat-button-toggle [value]="true" aria-label="Horizontal view">
+                        <mat-icon>apps</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle [value]="false" aria-label="Vertical view">
+                        <mat-icon>dehaze</mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+        </div>
+        <form>
+            <mat-form-field>
+                <mat-icon matPrefix class="search-icon">search</mat-icon>
+                <input type="tel" matInput placeholder="Search" name="search" [(ngModel)]="filter" (blur)="filterPhotos();" (keydown.enter)="filterPhotos();">
+            </mat-form-field>
+        </form>
+        <div class="album-container" *ngIf="photos">
+            <div [ngClass]="{'card-horizontal': horizontalDisplay, 'card-vertical': !horizontalDisplay}" *ngFor="let photo of filteredPhotos">
+
+                <div class="thumbnail" [ngClass]="{'thumbnail-horizontal': horizontalDisplay, 'thumbnail-vertical': !horizontalDisplay}">
+                    <img [src]="photo.thumbnailUrl" [alt]="photo.title">
+                </div>
+                <div class="card-description" [ngClass]="{'card-description-horizontal': horizontalDisplay, 'card-description-vertical': !horizontalDisplay}">
+                    <h2 class="card-title" [ngClass]="{'card-title-horizontal': horizontalDisplay}">
+                        {{photo.title | titlecase}}
+                    </h2>
+                    <div [ngClass]="{'trash-container-horizontal': horizontalDisplay}">
+                        <mat-icon matPrefix class="trash" [ngClass]="{'trash-horizontal': horizontalDisplay}" (click)="deletePhoto(photo);">delete</mat-icon>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+</div>

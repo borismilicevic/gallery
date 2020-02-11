@@ -1,0 +1,3 @@
+- pipe operator can accept multiple operators. We do not need separate pipe for each operator.
+- font family and size of input waterprints 
+- unsubscribe the observables - https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/

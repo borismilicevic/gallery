@@ -10,18 +10,18 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
-) { }
+  ) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.authenticationService.loginFlag){
+    if (this.authenticationService.loginFlag) {
       return true;
     }
-    else{
+    else {
       this.router.navigate(['/login']);
       return false;
     }
   }
-  
+
 }

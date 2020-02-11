@@ -14,16 +14,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {
     // redirect to home if user found in local storage
-    if (this.authenticationService.loginFlag) 
+    if (this.authenticationService.loginFlag)
       this.router.navigate(['./gallery']);
-   }
+  }
 
   ngOnInit() {
     this.user = new User();
   }
 
-  loginUser()
-  {
+  loginUser() {
     if (this.authenticationService.login(this.user))
       this.router.navigate(['./gallery']);
   }
